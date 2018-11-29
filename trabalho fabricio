@@ -1,0 +1,54 @@
+.data
+
+texto: .asciiz "Insira um numero\n"
+
+texto2: .asciiz "O triplo do numero digitado e: "
+
+numero:  .word 1
+
+triplo:  .word 1
+
+  
+.text
+
+
+main: 
+      
+li $v0, 4
+      
+la $a0, texto
+      
+syscall
+
+      
+li $v0, 5
+      
+syscall 
+
+      
+sw $v0, numero
+
+      
+addi $t2, $0, 3
+      
+mul $t0, $v0, $t2
+
+     
+sw $t0, triplo
+
+     
+li $v0, 4
+      
+la $a0, texto2
+      
+syscall
+	
+      
+li $v0, 1
+      
+move $a0, $t0
+      
+syscall
+
+      
+jr $ra
